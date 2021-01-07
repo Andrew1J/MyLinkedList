@@ -72,8 +72,17 @@ public class MyLinkedList{
         val.setData(value);
         return old;
     }
-    public String toString();
-    //Any helper method that returns a Node object MUST BE PRIVATE!
+
+    public String toString(){
+        if(size==0)return "[]";
+        String val = "[";
+        Node curr = start;
+        for(int i=0;i<size;i++){
+            value += curr.getNode(i) + ", ";
+        }
+        val += "]";
+        return val;
+    }
 
     private Node getNode(int n){
         if(n==0)return start;
