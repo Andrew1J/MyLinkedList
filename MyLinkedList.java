@@ -56,7 +56,13 @@ public class MyLinkedList{
         return true;
     }
 
-    public String get(int index);
+    public String get(int index){
+        if(index<0||index>=size){
+            throw new IndexOutOfBoundsException();
+        }
+        return getNode(index).getData();
+    }
+    
     public String set(int index, String value);
     public String toString();
     //Any helper method that returns a Node object MUST BE PRIVATE!
