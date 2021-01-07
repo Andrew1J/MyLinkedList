@@ -30,18 +30,16 @@ public class MyLinkedList{
         if(index<0||index>size){
             throw new IndexOutOfBoundsException();
         }
-        if(index==0){
+        if(index==size){
+            add(value);
+        } else if (index==0){
             start.setPrev(newValue);
             newValue.setNext(start);
             start = newValue;
             size++;
-        } else if (index == size-1){
+        } else if (index==size-1) {
             end.setNext(newValue);
             newValue.setPrev(end);
-            end = newValue;
-            size++;
-        } else if (size==0) {
-            start = newValue;
             end = newValue;
             size++;
         } else {
@@ -88,8 +86,6 @@ public class MyLinkedList{
     }
 
     private Node getNode(int n){
-        if(n==0)return start;
-        if(n==size-1)return end;
         Node curr = start;
         for(int i=0;i<n;i++){
             curr = curr.getNext();
