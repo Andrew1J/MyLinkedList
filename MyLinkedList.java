@@ -16,7 +16,7 @@ public class MyLinkedList{
             end = new Node(value);
             size++;
         } else {
-            end.setNext(value);
+            end.setNext(new Node(value));
             end = end.getNext();
             size++;
         }
@@ -44,7 +44,6 @@ public class MyLinkedList{
             size++;
         }
          else {
-            Node newValue = new Node(value);
             Node prevNode = getNode(index-1);
             Node nextNode = getNode(index);
             newValue.setPrev(prevNode);
@@ -78,7 +77,7 @@ public class MyLinkedList{
         String val = "[";
         Node curr = start;
         for(int i=0;i<size;i++){
-            value += curr.getNode(i) + ", ";
+            val += getNode(i).getData() + ", ";
         }
         val += "]";
         return val;
