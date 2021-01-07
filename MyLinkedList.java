@@ -25,7 +25,7 @@ public class MyLinkedList{
         return true;
     }
 
-    public boolean add(int index, String value){
+    public void add(int index, String value){
         Node newValue = new Node(value);
         if(index<0||index>size){
             throw new IndexOutOfBoundsException();
@@ -51,7 +51,6 @@ public class MyLinkedList{
             nextNode.setPrev(newValue);
             size++;
         }
-        return true;
     }
 
     public String get(int index){
