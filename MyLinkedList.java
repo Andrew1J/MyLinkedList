@@ -28,14 +28,19 @@ public class MyLinkedList{
             throw new IndexOutOfBoundsException();
         }
         Node newValue = new Node(value);
-        Node place = start;
-
+        Node prevNode = getNode(index-1);
+        Node nextNode = getNode(index);
+        newValue.setPrev(prevNode);
+        newValue.setNext(nextNode);
+        prevNode.setNext(newValue);
+        nextNode.setPrev(newValue);
     }
+    
     public String get(int index);
     public String set(int index, String value);
     public String toString();
     //Any helper method that returns a Node object MUST BE PRIVATE!
-    
+
     private Node getNode(int n){
         if(n==0)return start;
         if(n==size-1)return end;
