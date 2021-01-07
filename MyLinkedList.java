@@ -24,18 +24,38 @@ public class MyLinkedList{
     }
 
     public boolean add(int index, String value){
+        Node newValue = new Node(value);
         if(index<0||index>size){
             throw new IndexOutOfBoundsException();
         }
-        Node newValue = new Node(value);
-        Node prevNode = getNode(index-1);
-        Node nextNode = getNode(index);
-        newValue.setPrev(prevNode);
-        newValue.setNext(nextNode);
-        prevNode.setNext(newValue);
-        nextNode.setPrev(newValue);
+        if(index==0){
+            start.setPrev(newValue);
+            newValue.setNext(start);
+            start = newValue;
+            size++;
+        } else if (index == size-1){
+            end.setNext(newValue);
+            newValue.setPrev(end);
+            end = newValue;
+            size++;
+        } else if (size==0) {
+            start = newValue;
+            end = newValue;
+            size++;
+        }
+         else {
+            Node newValue = new Node(value);
+            Node prevNode = getNode(index-1);
+            Node nextNode = getNode(index);
+            newValue.setPrev(prevNode);
+            newValue.setNext(nextNode);
+            prevNode.setNext(newValue);
+            nextNode.setPrev(newValue);
+            size++;
+        }
+        return true;
     }
-    
+
     public String get(int index);
     public String set(int index, String value);
     public String toString();
