@@ -133,8 +133,6 @@ public class MyLinkedList{
         end.setNext(other.start);
         other.start.setPrev(end);
         end = other.end;
-        other.start = null;
-        other.size = 0;
         size+=other.size();
         other.size = 0;
         other.start = null;
