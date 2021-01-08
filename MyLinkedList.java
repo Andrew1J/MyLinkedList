@@ -30,17 +30,15 @@ public class MyLinkedList{
         if(index<0||index>size){
             throw new IndexOutOfBoundsException();
         }
-        if(index==size){
+        if (size==0){
+            start = newValue;
+            end = newValue;
+        } else if(index==size){
             add(value);
         } else if (index==0){
             start.setPrev(newValue);
             newValue.setNext(start);
             start = newValue;
-            size++;
-        } else if (index==size-1) {
-            end.setNext(newValue);
-            newValue.setPrev(end);
-            end = newValue;
             size++;
         } else {
             Node prevNode = getNode(index-1);
@@ -77,8 +75,21 @@ public class MyLinkedList{
         for(int i=0;i<size;i++){
             if(getNode(i)!=null){
                 val += getNode(i).getData();
+                if(i!=size-1)val+=", ";
             }
-            if(i!=size-1)val+=", ";
+        }
+        val += "]";
+        return val;
+    }
+    public String toStringReversed(){
+        if(size==0)return "[]";
+        String val = "[";
+        Node curr = start;
+        for(int i=size-1;i>=0;i--){
+            if(getNode(i)!=null){
+                val += getNode(i).getData();
+                if(i!=0)val+=", ";
+            }
         }
         val += "]";
         return val;
