@@ -81,6 +81,7 @@ public class MyLinkedList{
         val += "]";
         return val;
     }
+
     public String toStringReversed(){
         if(size==0)return "[]";
         String val = "[";
@@ -93,6 +94,38 @@ public class MyLinkedList{
         }
         val += "]";
         return val;
+    }
+
+    public String remove(int index){
+        if(index<0||index>size){
+            throw new IndexOutOfBoundsException();
+        }
+        String old=getNode(index);
+        if (size==1){
+            start = null;
+            end = null;
+        } else if (index==0){
+            Node nextNode = getNode(index+1);
+            Node value = getNode(index);
+            nextNode.setPrev(null);
+            value.setNext(null);
+            start = nextNode;
+        } else if (index==size-1){
+            Node prevNode = getNode(index-1);
+            Node value = getNode(index);
+            value.setPrev(null);
+            prevNode.setNext(null);
+            end = prevNode;
+        } else {
+            Node value = getNode(index);
+            Node prevNode = getNode(index-1);
+            Node nextNode = getNode(index+1);
+            prevNode.setNext(nextNode);
+            nextNode.setPrev(prevNode);
+            value.setNext(null);
+            value.setPrev(null);
+        }
+        return old;
     }
 
     private Node getNode(int n){
