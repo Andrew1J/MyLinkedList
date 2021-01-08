@@ -33,6 +33,7 @@ public class MyLinkedList{
         if (size==0){
             start = newValue;
             end = newValue;
+            size++;
         } else if(index==size){
             add(value);
         } else if (index==0){
@@ -97,7 +98,7 @@ public class MyLinkedList{
     }
 
     public String remove(int index){
-        if(index<0||index>size){
+        if(index<0||index>=size){
             throw new IndexOutOfBoundsException();
         }
         String old=getNode(index).getData();
