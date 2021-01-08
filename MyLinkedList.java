@@ -100,7 +100,7 @@ public class MyLinkedList{
         if(index<0||index>size){
             throw new IndexOutOfBoundsException();
         }
-        String old=getNode(index);
+        String old=getNode(index).getData();
         if (size==1){
             start = null;
             end = null;
@@ -127,6 +127,18 @@ public class MyLinkedList{
         }
         size--;
         return old;
+    }
+
+    public void extend(MyLinkedList other){
+        end.setNext(other.start);
+        other.start.setPrev(end);
+        end = other.end;
+        other.start = null;
+        other.size = 0;
+        size+=other.size();
+        other.size = 0;
+        other.start = null;
+        other.end = null;
     }
 
     private Node getNode(int n){
