@@ -125,6 +125,7 @@ public class MyLinkedList{
             value.setNext(null);
             value.setPrev(null);
         }
+        size--;
         return old;
     }
 
